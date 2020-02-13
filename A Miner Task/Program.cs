@@ -7,34 +7,26 @@ namespace A_Miner_Task
     {
         static void Main(string[] args)
         {
-            var data = new Dictionary<string, int>();
-           
-            string resource = Console.ReadLine();
-            int quantiti = 0;
-            while (resource!="stop")
+             var resourses = new Dictionary<string, int>();
+            var resours = string.Empty;
+
+            while (resours != "stop")
             {
-                if (resource=="stop")
+                resours = Console.ReadLine();
+                if (resours=="stop")
                 {
                     break;
                 }
-                quantiti = int.Parse(Console.ReadLine());
-                if (!data.ContainsKey(resource))
-                {
-                    data.Add(resource, 0);
-                    data[resource] += quantiti;
-                }
-                else
-                {
-                    data[resource] += quantiti;
-                }
-                resource = Console.ReadLine();
-               
-            }
+                var quantiti =int.Parse(Console.ReadLine());
 
-            foreach (var item in data)
+                if (!resourses.ContainsKey(resours))
+                {
+                    resourses.Add(resours,0);
+                }
+                resourses[resours] += quantiti;
+            }
+            foreach (var item in resourses)
             {
-                var resours = data.Keys;
-                var qantiti = data.Values;
                 Console.WriteLine($"{item.Key} -> {item.Value}");
             }
         }
