@@ -8,32 +8,27 @@ namespace Count_Chars_in_a_String
     {
         static void Main(string[] args)
         {
-            char[] input = Console.ReadLine().ToArray();
+            char[] line = Console.ReadLine().ToArray();
+            Dictionary<char, int> characters = new Dictionary<char, int>();
 
-            var letters = new Dictionary<char, int>();
-
-            foreach (var symbol in input)
+            for (int i = 0; i < line.Length; i++)
             {
-                if (!letters.ContainsKey(symbol))
+                
+                if (!characters.ContainsKey(line[i]) && line[i]!=' ')
                 {
-                    letters.Add(symbol, 1);
+                    characters.Add(line[i],1);
                 }
-                else
+                else if(characters.ContainsKey(line[i]) && line[i] != ' ')
                 {
-                    letters[symbol]++;
+                    characters[line[i]]++;
                 }
             }
-            var result = new List<char>();
 
-            foreach (var pair in letters)
+            foreach (var item in characters)
             {
-                var letter = pair.Key;
-                var letterPair = pair.Value;
-                Console.WriteLine($"{letter} -> {letterPair}");
+                Console.WriteLine($"{item.Key} - {item.Value}");
             }
-
         }
-        //да се премахне празното място между чаровете
     }
 }
 
